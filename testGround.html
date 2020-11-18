@@ -1,13 +1,20 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <body>
-            <div id="testing">
-                test
-            </div>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#tes").change(function(){
+    alert("The text has been changed.");
+  });
+});
+</script>
+</head>
+<body>
 
-            <script type="text/javascript">
-                document.getElementById("testing").innerHTML = "Ganti!";
-            </script>    
-        </body>
-    </head>
+<input id="tes" type="text">
+
+<p>Write something in the input field, and then press enter or click outside the field.</p>
+
+</body>
 </html>

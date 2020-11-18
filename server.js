@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/mongodblogintest";
+var url = "mongodb://localhost:27017/kelompok13db";
 
 var express = require('express');
 var session = require('express-session');
@@ -39,8 +39,8 @@ app.post('/auth', function(request, response) {
 
 		console.log(inputemail+" "+inputpassword);
 		var finding = {email: inputemail, password: inputpassword};
-		var dbo = db.db("mongodblogintest");
-		dbo.collection("accounts").find(finding).toArray(function(err, res){
+		var dbo = db.db("kelompok13db");
+		dbo.collection("adminaccounts").find(finding).toArray(function(err, res){
 			if(res.length > 0){
 				loginToken = true;
 				response.sendFile(path.join(__dirname + '/homepage.html'));
@@ -62,8 +62,8 @@ app.post('/creatingaccount', function(request, response) {
 		var newpassword = request.body.newpassword;
 		var confpassword = request.body.confpassword;
 		var myobj = { email: newemail, password: newpassword };
-		var dbo = db.db("mongodblogintest");
-  		dbo.collection("accounts").insertOne(myobj, function(err, res) {
+		var dbo = db.db("kelompok13db");
+  		dbo.collection("adminaccounts").insertOne(myobj, function(err, res) {
     		if (err) throw err;
     		console.log("1 document inserted");
     		db.close();
