@@ -3,6 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Login Form Tutorial</title>
+		<link href="Navbar.css" rel="stylesheet" type="text/css">
+
 		<style>
 		.login-form {
 			width: 300px;
@@ -37,6 +39,20 @@
 		</style>
 	</head>
 	<body>
+		<header>
+
+			<div class="navbar">
+				<div class="navbar-logo">
+					KELOMPOK 13
+				</div>
+				<div>
+					<ul class="nav-menu">
+						<a class="nav-links" href="/registration.html">New Admin</a>
+					</ul>
+				</div>
+			</div>
+		</header>
+	
 		<div class="login-form">
 			<h1>Login Form</h1>
 			<form action="auth" method="POST">
@@ -45,8 +61,5 @@
 				<input type="submit">
 			</form>
 		</div>
-		<form action="auth" method="POST">
-			<input type="submit" value="Create Account">
-		</form>
 	</body>
 </html>

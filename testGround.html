@@ -1,20 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#tes").change(function(){
-    alert("The text has been changed.");
-  });
-});
-</script>
-</head>
-<body>
+<h1>MONGODB - EXERCISE</h1>
+<section class="get">
+    <h3>Get Data</h3>
+    <a href="/get-data">LOAD DATA</a>
+    <div>
+        {{# each items }}
+            <article class="item">
+                <div>fullname: {{ this.fullname }}</div>
+                <div>email: {{ this.email }}</div>
+                <div>address: {{ this.address }}</div>
+                <div>city: {{ this.city }}</div>
+                <div>quantity: {{ this.quantity }}</div>
+                <div>total: {{ this.total }}</div>
+                <div>cardname: {{ this.cardname }}</div>
+                <div>cardnumber: {{ this.cardnumber }}</div>
+                <div>expmonth: {{ this.expmonth }}</div>
+                <div>expyear: {{ this.expyear }}</div>
+                <div>cvv: {{ this.cvv }}</div>
+                <div>ID: {{ this._id }}</div>
+            </article>
+        {{/each}}
+    </div>
+</section>
 
-<input id="tes" type="text">
-
-<p>Write something in the input field, and then press enter or click outside the field.</p>
-
-</body>
-</html>
+</section>
+<section class="delete">
+    <h3>Delete Data</h3>
+    <form action="/delete" method="post">
+        <div class="input">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id">
+        </div>
+        <button type="submit">DELETE</button>
+    </form>
+</section>

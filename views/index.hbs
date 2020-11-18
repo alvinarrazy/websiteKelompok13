@@ -1,0 +1,45 @@
+<h1>ORDER LIST</h1>
+<section class="get">
+    <div>
+        <table class="darkTable" width='100%' border=1>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Card Name</th>
+                    <th>Card Number</th>
+                    <th>ID</th>
+                </tr>
+                <thead>
+                    {{# each items }}
+
+                    <article class="item">
+                <tbody>
+                    <td>{{ this.fullname }}</td>
+                    <td>{{ this.email }}</td>
+                    <td>{{ this.address }}</td>
+                    <td>{{ this.quantity }}</td>
+                    <td>{{ this.total }}</td>
+                    <td>{{ this.cardname }}</td>
+                    <td>{{ this.cardnumber }}</td>
+                    <td>{{ this._id }}</td>
+                </tbody>
+                </article>
+                {{/each}}
+    </div>
+</section>
+
+</section>
+{{!-- <section class="delete">
+    <h3>Delete Data</h3>
+    <form action="/orderList/delete" method="post">
+        <div class="input">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id">
+        </div>
+        <button type="submit">DELETE</button>
+    </form>
+</section>  --}}
