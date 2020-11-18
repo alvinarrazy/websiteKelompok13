@@ -1,0 +1,88 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background: url(assets/image/index-image.jpg)no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.main-nav li{
+    display: inline-block;
+}
+
+.main-nav li a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+}
+
+.main-nav li.active a{
+    border: 1px solid white;
+}
+
+.main-nav li a:hover{
+    border: 1px solid white;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;
+    float: left;
+    margin-left: 40px;
+}
+
+body{
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.row{
+    max-width: 1366px;
+    margin: auto;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.prologue{
+    position: absolute;
+    color: white;
+    width: 1366px;
+    text-align: center;
+    margin-top: 200px;
+}
+
+h1{
+    font-size: 70px;
+    text-transform: uppercase;
+}
+
+.front-button{
+    margin-top: 30px;
+    margin-left: 0px;
+}
+
+.front-button-obj{
+    font-size: 20px;
+    border: 1px solid white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-family: "Roboto", sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-transform: uppercase;
+    font-style: bold;
+    color: white;
+}
