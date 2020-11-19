@@ -5,7 +5,7 @@
 }
 
 html{
-    background: url(assets/image/index-image.jpg)no-repeat center center fixed; 
+    background: url(assets/image/img-home.jpg)no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -38,7 +38,7 @@ html{
     border: 1px solid white;
 }
 
-.logo img{
+.logo{
     width: 100px;
     height: auto;
     float: left;
