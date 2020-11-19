@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="navbar">
         <div class="navbar-logo">
-            Regular Ticket Purchase
+            Annual Pass Purchase
         </div>
         <div>
             <ul class="nav-menu">
@@ -142,7 +142,7 @@
     <h2>Fill out the Form</h2>
     <div class="col-75">
         <div class="container">
-            <form action="orderRegular" method="POST">
+            <form action="orderPass" method="POST">
 
                 <div class="row">
                     <div class="col-50">
@@ -160,7 +160,7 @@
                                 $(document).ready(function () {
                                     $("#quantity").change(function () {
                                         $('#total').attr('value',
-                                            parseInt(document.getElementById("quantity").value, 10) * 4 + '$');
+                                            parseInt(document.getElementById("quantity").value, 10) * 10 + '$');
                                     });
                                 });
                             </script>

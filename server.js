@@ -94,7 +94,7 @@ app.post('/creatingaccount', function (request, response) {
 
 
 //Untuk Order
-app.get('/orderList/get-data', function (req, res, next) {
+app.get('/orderList/get-data-regular', function (req, res, next) {
 	var resultArray = [];
 	MongoClient.connect(url, function (err, db) {
 		assert.equal(null, err);
@@ -105,24 +105,54 @@ app.get('/orderList/get-data', function (req, res, next) {
 			resultArray.push(doc);
 		}, function () {
 			db.close();
-			res.render('index', { items: resultArray });
+			res.render('regularList', { items: resultArray });
 		});
 	});
 });
 
- app.post('/orderList/delete', function(req, res, next) {
- 	var id = req.body.id;
+// app.get('/orderList/get-data-pass', function (req, res, next) {
+// 	var resultArray = [];
+// 	MongoClient.connect(url, function (err, db) {
+// 		assert.equal(null, err);
+// 		var dbo = db.db("kelompok13db");
+// 		var cursor = dbo.collection('passorder').find();
+// 		cursor.forEach(function (doc, err) {
+// 			assert.equal(null, err);
+// 			resultArray.push(doc);
+// 		}, function () {
+// 			db.close();
+// 			res.render('passList', { items: resultArray });
+// 		});
+// 	});
+// });
+
+//  app.post('/orderList/regular/delete', function(req, res, next) {
+//  	var id = req.body.id;
   
- 	MongoClient.connect(url, function(err, db) {
- 	  assert.equal(null, err);
- 	  var dbo = db.db("kelompok13db");
- 	  dbo.collection('user-data').deleteOne({"_id": id}, function(err, result) {
- 		assert.equal(null, err);
-		console.log('Item deleted');
- 		db.close();
-	  });
- 	});
-   });
+//  	MongoClient.connect(url, function(err, db) {
+//  	  assert.equal(null, err);
+//  	  var dbo = db.db("kelompok13db");
+//  	  dbo.collection('regularorder').deleteOne({"_id": objectId(id)}, function(err, result) {
+//  		assert.equal(null, err);
+// 		console.log('Item deleted');
+//  		db.close();
+// 	  });
+//  	});
+//    });
+
+   app.post('/orderList/pass/delete', function(req, res, next) {
+	var id = req.body.id;
+ 
+	MongoClient.connect(url, function(err, db) {
+	  assert.equal(null, err);
+	  var dbo = db.db("kelompok13db");
+	  dbo.collection('passorder').deleteOne({"_id": objectId(id)}, function(err, result) {
+		assert.equal(null, err);
+	   console.log('Item deleted');
+		db.close();
+	 });
+	});
+  });
 
 app.post('/orderRegular', function (request, response) {
 	MongoClient.connect(url, function (err, db) {
@@ -151,6 +181,35 @@ app.post('/orderRegular', function (request, response) {
 		});
 	});
 });
+
+app.post('/orderPass', function (request, response) {
+	MongoClient.connect(url, function (err, db) {
+		var fullname = request.body.fullname;
+		var email = request.body.email;
+		var address = request.body.address;
+		var quantity = request.body.quantity;
+		var total = request.body.total;
+		var cardname = request.body.cardname;
+		var cardnumber = request.body.cardnumber;
+		var myobj = {
+			fullname: fullname,
+			email: email,
+			address: address,
+			quantity: quantity,
+			total: total,
+			cardname: cardname,
+			cardnumber: cardnumber,
+		};
+		var dbo = db.db("kelompok13db");
+		dbo.collection("passorder").insertOne(myobj, function (err, res) {
+			if (err) throw err;
+			console.log("1 new pass order inserted");
+			db.close();
+			response.redirect('/');
+		});
+	});
+});
+
 
 
 app.listen(3000, () => console.log(__dirname + '/'));
