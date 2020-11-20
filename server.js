@@ -1,3 +1,4 @@
+//////////////////Import library sama database framework////////////////////////////////
 var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 
@@ -13,6 +14,8 @@ var assert = require('assert');
 
 var app = express();
 
+//////////////////Setup Server biar bisa akses data base////////////////////////////////
+
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -27,18 +30,19 @@ app.engine('hbs', hbs({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __d
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-//Untuk Login-Logout
-app.get('/', function (request, response) {
+//////////////////Untuk Login-Logout////////////////////////////////
+
+app.get('/', function (request, response) {//Ngambil homepage, kalau udah login ke dashboard admin
 	if (loginToken == true) {
 		response.sendFile(path.join(__dirname + '/homepage.html'));
+	}else{
+		response.sendFile(path.join(__dirname + '/noLogin.html'));
+
 	}
-
-	response.sendFile(path.join(__dirname + '/noLogin.html'));
-
 });
 
-app.get('/loggingout', function (request, response) {
-	loginToken = true;
+app.get('/loggingout', function (request, response) {//Untuk logout, remove token
+	loginToken = false;
 	response.redirect('/');
 });
 
@@ -93,8 +97,8 @@ app.post('/creatingaccount', function (request, response) {
 });
 
 
-//Untuk Order
-app.get('/orderList/get-data-regular', function (req, res, next) {
+//////////////////Untuk Order////////////////////////////////
+app.get('/orderList/get-data-regular', function (req, res, next) {//Membuat list order tiket reguler
 	var resultArray = [];
 	MongoClient.connect(url, function (err, db) {
 		assert.equal(null, err);
@@ -110,51 +114,38 @@ app.get('/orderList/get-data-regular', function (req, res, next) {
 	});
 });
 
-// app.get('/orderList/get-data-pass', function (req, res, next) {
-// 	var resultArray = [];
-// 	MongoClient.connect(url, function (err, db) {
-// 		assert.equal(null, err);
-// 		var dbo = db.db("kelompok13db");
-// 		var cursor = dbo.collection('passorder').find();
-// 		cursor.forEach(function (doc, err) {
-// 			assert.equal(null, err);
-// 			resultArray.push(doc);
-// 		}, function () {
-// 			db.close();
-// 			res.render('passList', { items: resultArray });
-// 		});
-// 	});
-// });
+ app.get('/orderList/get-data-pass', function (req, res, next) {//Membuat list order annual pass
+ 	var resultArray = [];
+ 	MongoClient.connect(url, function (err, db) {
+ 		assert.equal(null, err);
+ 		var dbo = db.db("kelompok13db");
+ 		var cursor = dbo.collection('passorder').find();
+ 		cursor.forEach(function (doc, err) {
+ 			assert.equal(null, err);
+ 			resultArray.push(doc);
+ 		}, function () {
+ 			db.close();
+ 			res.render('passList', { items: resultArray });
+ 		});
+ 	});
+ });
 
-//  app.post('/orderList/regular/delete', function(req, res, next) {
-//  	var id = req.body.id;
-  
-//  	MongoClient.connect(url, function(err, db) {
-//  	  assert.equal(null, err);
-//  	  var dbo = db.db("kelompok13db");
-//  	  dbo.collection('regularorder').deleteOne({"_id": objectId(id)}, function(err, result) {
-//  		assert.equal(null, err);
-// 		console.log('Item deleted');
-//  		db.close();
-// 	  });
-//  	});
-//    });
 
-   app.post('/orderList/pass/delete', function(req, res, next) {
-	var id = req.body.id;
+//    app.post('/orderList/pass/delete', function(req, res, next) {
+// 	var id = req.body.id;
  
-	MongoClient.connect(url, function(err, db) {
-	  assert.equal(null, err);
-	  var dbo = db.db("kelompok13db");
-	  dbo.collection('passorder').deleteOne({"_id": objectId(id)}, function(err, result) {
-		assert.equal(null, err);
-	   console.log('Item deleted');
-		db.close();
-	 });
-	});
-  });
+// 	MongoClient.connect(url, function(err, db) {
+// 	  assert.equal(null, err);
+// 	  var dbo = db.db("kelompok13db");
+// 	  dbo.collection('passorder').deleteOne({"_id": objectId(id)}, function(err, result) {
+// 		assert.equal(null, err);
+// 	   console.log('Item deleted');
+// 		db.close();
+// 	 });
+// 	});
+//   });
 
-app.post('/orderRegular', function (request, response) {
+app.post('/orderRegular', function (request, response) {//menambahkan order tiket reguler baru
 	MongoClient.connect(url, function (err, db) {
 		var fullname = request.body.fullname;
 		var email = request.body.email;
@@ -182,7 +173,7 @@ app.post('/orderRegular', function (request, response) {
 	});
 });
 
-app.post('/orderPass', function (request, response) {
+app.post('/orderPass', function (request, response) {//menambahkan order annual pass baru
 	MongoClient.connect(url, function (err, db) {
 		var fullname = request.body.fullname;
 		var email = request.body.email;
@@ -212,4 +203,4 @@ app.post('/orderPass', function (request, response) {
 
 
 
-app.listen(3000, () => console.log(__dirname + '/'));
+app.listen(3000, () => console.log(__dirname + '/'));//server active di  localhost:3000
