@@ -1,16 +1,11 @@
+/* Styling utama */
 *
 {
     margin: 0;
     padding: 0;
 }
 
-html{
-    background: url(assets/image/img-home.jpg)no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+
 
 .main-nav{
     float: right;
@@ -58,7 +53,7 @@ body{
 
 .prologue{
     position: absolute;
-    color: white;
+    color: black;
     width: 1366px;
     text-align: center;
     margin-top: 200px;
@@ -76,7 +71,7 @@ h1{
 
 .front-button-obj{
     font-size: 20px;
-    border: 1px solid white;
+    border: 1px solid black;
     text-decoration: none;
     padding: 10px 20px;
     font-family: "Roboto", sans-serif;
@@ -84,5 +79,5 @@ h1{
     margin-right: 20px;
     text-transform: uppercase;
     font-style: bold;
-    color: white;
+    color: black;
 }

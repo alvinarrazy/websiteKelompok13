@@ -1,0 +1,95 @@
+<html>
+<!-- Halaman memilih jenis tiket -->
+<head>
+    <title>
+        Pilih Tiket
+    </title>
+    <link href="Navbar.css" rel="stylesheet" type="text/css">
+    <style>
+        html {
+            background: url(assets/image/ticketBack.jpg)no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .box {
+            display: flex;
+            align-items: stretch;
+            margin: 0 15% 0 15%;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .price {
+            color: grey;
+            font-size: 22px;
+        }
+
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+
+        }
+
+        .card button:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div class="navbar">
+            <div class="navbar-logo">
+                KELOMPOK 13
+            </div>
+            <div>
+                <ul class="nav-menu">
+                    <form action="/" class="nav-links">
+                        <input type="submit" value="Back to Homepage">
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="prologue">
+        <h2>Which one do you prefer?</h2>
+        <br />
+        <br />
+        <br />
+        <div class="box">
+            <div class="card">
+                <img src="/assets/image/blueTicket.png" alt="Denim Jeans" style="width:100%">
+                <h1>Regular Ticket</h1>
+                <p class="price">$4 per person (child or adult)</p>
+                <p>Get your ticket entrance for 1 time use here</p>
+                <p><button onclick="window.location.href='regularOrder.html'">I'd like this one</button></p>
+            </div>
+            <div class="card">
+                <img src="/assets/image/redTicket.png" alt="Denim Jeans" style="width:100%">
+                <h1>Tailored Jeans</h1>
+                <p class="price">$10 per person (child or adult)</p>
+                <p>Get your special ticket for 1 year pass here</p>
+                <p><button onclick="window.location.href='passOrder.html'">I'd like this one</button></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
